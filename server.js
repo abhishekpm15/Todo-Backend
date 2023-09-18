@@ -3,12 +3,16 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
+
 app.use(bodyParser.json());
 app.use(cors());
-require('dotenv').config();
+require("dotenv").config();
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tn0wwt0.mongodb.net/`)
+  .connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tn0wwt0.mongodb.net/`
+  )
   .then(() => {
     console.log("connected to db");
   })
@@ -60,7 +64,7 @@ app.delete("/delete-data/:_id", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  console.log("Hello world");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 app.listen(3000, () => {
   console.log("Listening on port 3000");
