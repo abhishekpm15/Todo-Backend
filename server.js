@@ -7,7 +7,7 @@ const path = require("path");
 
 app.use(bodyParser.json());
 app.use(cors());
-require("dotenv").config();
+require("dotenv").config({ path: "./.env" });
 mongoose.set("strictQuery", false);
 mongoose
   .connect(
