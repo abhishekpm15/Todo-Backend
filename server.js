@@ -8,6 +8,9 @@ const path = require("path");
 app.use(bodyParser.json());
 app.use(cors());
 require("dotenv").config();
+
+const port = process.env.PORT || 3000;
+
 mongoose.set("strictQuery", false);
 mongoose
   .connect(
@@ -66,6 +69,6 @@ app.delete("/delete-data/:_id", (req, res) => {
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
-app.listen(3000, () => {
+app.listen(port,"0.0.0.0", () => {
   console.log("Listening on port 3000");
 });
