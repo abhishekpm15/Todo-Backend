@@ -69,6 +69,6 @@ app.delete("/delete-data/:_id", (req, res) => {
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
-app.listen(port,"0.0.0.0", () => {
+app.listen(port, () => {
   console.log("Listening on port 3000");
 });
